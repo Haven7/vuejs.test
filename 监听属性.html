@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="n" style="width: 30px">&nbsp;&nbsp;的平方是:&nbsp;&nbsp;{{result}}
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+
+    let vm=new Vue({
+        el:'#app',
+            data:{
+                n:1,
+                result:1
+            },
+      /*  watch:{
+            n(newN,oldN) {
+                console.log(newN,oldN);
+                this.result=newN*newN;
+            }
+        }*/
+    });
+
+    vm.$watch('n',function (newN,oldN) {
+        console.log(newN,oldN);
+        this.result=newN*newN;
+    })
+</script>
+</body>
+</html>

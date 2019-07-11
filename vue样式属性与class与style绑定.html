@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aClass{
+            color: red
+        }
+        .bClass{
+            color: green
+        }
+        .cClass{
+            font-size:20px
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2>class样式属性绑定</h2>
+    <p :class="a">样式属性绑定</p>
+    <p :class="{aClass:AA,cClass:BB}">多样式对象</p>
+    <button @click="change">修改</button>
+    <button @click="toggle">修改2</button>
+    <h2>style内联样式绑定</h2>
+    <p :style="{ color: activeColor, fontSize: fontSize + 'px' }">内联样式绑定</p>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+
+    new Vue({
+        el:'#app',
+            data:{
+            a:'aClass',
+                AA:true,
+                BB:true,
+
+
+            },
+        methods:{
+            change(){
+                this.a='bClass'
+            },
+            toggle(){
+                this.a=(this.a=='aClass'?'bClass':'aClass');
+                this.BB=(this.BB==true?false:true);
+                this.activeColor=(this.activeColor=='green'?'red':'green');
+                    this.fontSize=( this.fontSize==10?30:10);
+            }
+
+        }
+
+    })
+</script>
+</body>
+</html>

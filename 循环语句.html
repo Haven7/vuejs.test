@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>列表遍历</h2>
+        <ul>
+            <li v-for="item in items">
+                {{item.name}}
+            </li>
+        </ul>
+    <h2>index索引参数</h2>
+        <ul>
+            <li v-for="(item,index) in items">
+                {{index}}-{{item.name}}
+            </li>
+        </ul>
+    <h2>遍历对象</h2>
+        <ul>
+            <li v-for="value in object">
+                {{value}}
+            </li>
+        </ul>
+    <h2>name属性名参数</h2>
+    <ul>
+        <li v-for="(value,name,index) in object">
+            {{index}}-{{name}}-{{value}}
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            items:[
+                {name:'北京'},
+                {name:'天津'},
+                {name:'河北'}
+            ],
+            object: {
+                title: 'How to do lists in Vue',
+                author: 'Jane Doe',
+                publishedAt: '2016-04-10'
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

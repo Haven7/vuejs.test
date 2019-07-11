@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>插值</h2>
+        <input type="text" v-model="message">
+        <p>{{message}}</p>
+        <p v-once>{{message}}</p>
+        <p v-html="message"></p>
+    <h2>数据绑定</h2>
+        <div id="dynamicId" >11</div>
+        <div v-bind:id="dynamicId">22</div>
+        <div :id="dynamicId">33</div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+    <h2>js表达式</h2>
+    {{ number + 1 }}
+    <hr>
+    {{ ok ? 'YES' : 'NO' }}
+    <hr>
+    {{ info.split('').reverse().join('') }}
+    <hr>
+    <a href="url"></a>
+    <a v-bind:href="url">百度一下 </a>
+    <a :href="url">百度一下 </a>
+
+    <h2>事件绑定</h2>
+    <button v-on:click="doSomething ">按钮1</button>
+    <button @click="doSomething2">按钮2</button>
+
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+            message:'<font color="#a52a2a">多加</font>',
+            dynamicId:3,
+            data:{
+                isButtonDisabled:false,
+            number:2,
+            ok:true,
+            info:'1 3 5',
+            url:'http://www.baidu.com'
+        },
+        methods:{
+            doSomething() {
+                alert('点我干嘛！？')
+            },
+            doSomething2(){
+                alert('又点我')
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>https://www.bilibili.com/video/av55960235/?p=8</h1>
+<div id="app">
+    <div>
+        {{ message.split('').reverse().join('') }}
+    </div>
+    <h2>计算属性</h2>
+    <div>
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+        <button @click="change()">改变</button>
+    </div>
+    <h2>计算属性缓存 vs 方法</h2>
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+        <p>Methods reversed message: "{{ reversedMessage2() }}"</p>
+        <p>Methods reversed message: "{{ reversedMessage2() }}"</p>
+    <h2>计算属性set</h2>
+    <p>Computed reversed message: "{{ reversedInfo }}"</p>
+    <button @click="change2()">改变2</button>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    let count=1;
+    let vm =new Vue({
+        el:'#app',
+            data:{
+            message:'Hello',
+            info:'Hello'
+        },
+        computed:{
+            //计算属性的getter
+            reversedMessage (){
+                count++;
+                return count+''+this.message.split('').reverse().join('')
+            },
+            reversedInfo:{
+               get(){
+                   console.log('调用Inof get')
+                   return this.info.split('').reverse().join('')
+               },
+                set(newvalue){
+                   this.info='hhccee'
+                   console.log(newvalue);
+                    console.log('重新做一些计算处理');
+                }
+            }
+        },
+        methods: {
+            change(){
+                this.message='haven';
+            },
+            change2(){
+                vm.reversedInfo='hhhhaven';
+            },
+            reversedMessage2() {
+                count++;
+                return count+''+this.message.split('').reverse().join('')
+            }
+
+        }
+
+    })
+</script>
+</body>
+</html>
